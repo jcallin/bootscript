@@ -1,9 +1,7 @@
-# Bash-Profile
-My bash profile for Mac. Not tested on Linux but things like xargs will probably break
+# bootscript
+Contains the bootscript file which does initial setup on Mac/WSL2(debian)
 
 ### Setup
-1. Create a file `.bash_profile_env_vars` in this repository. Use it to store secrets from your environment (API keys, user/pass if you roll that way, etc).
-2. Run `source /path/to/this/repo/.bash_profile`
-3. If you modify the bash profile, use `ref` to automatically load the newest version
-
-When the profile runs, it will automatically create symlinks from `~/.bash_profile` to  and `~/.bash_profile_env_vars` to `.bash_profile` and `.bash_profile_env_vars` in this repo
+1. Import ssh configuration into a local file `.ssh` next to the `bootscript.sh`
+2. Run `bootscript.sh`
+3. Run `.zshrc` and/or combine with `.zshrc-windows`
