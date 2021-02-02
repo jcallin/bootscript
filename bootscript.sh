@@ -20,7 +20,9 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   brew install git zip unzip vim curl zsh zplug coreutils
-  sudo ln -s /usr/local/bin/greadlink /usr/bin/readlink
+  # This dir is meant for user bins and exists FIRST on the PATH but is not created by default on Mac
+  sudo mkdir -p /usr/local/bin
+  sudo ln -s /usr/local/bin/greadlink /usr/local/bin/readlink
   
 else
   # Update the system
