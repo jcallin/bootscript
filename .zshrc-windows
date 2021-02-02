@@ -1,0 +1,37 @@
+#
+# .zshrc additions for Windows WSL 2 (debian)
+#
+
+# Set path if required
+#export PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
+export PATH=$PATH:/mnt/c/Users/jcall/AppData/Local/Programs/Microsoft\ VS\ Code/bin/
+
+# On windows, set a second home alias for the windows home dir
+hash -d w=/mnt/c/Users/jcall
+
+# Fix WSL memory issues
+# https://github.com/microsoft/WSL/issues/4166
+sudo /etc/init.d/cron start >/dev/null
+
+alias awk=gawk
+
+# checks to see if we are in a windows or linux dir
+function isWinDir {
+  case $PWD/ in
+    /mnt/*) return $(true);;
+         *) return $(false);;
+  esac
+}
+# wrap the git command to either run windows git or linux. Git runs super slow in wsl2
+function git {
+  if isWinDir
+  then
+    git.exe "$@"
+  else
+    /usr/bin/git "$@"
+   fi
+}
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/jcallin/.sdkman"
+[[ -s "/home/jcallin/.sdkman/bin/sdkman-init.sh" ]] && source "/home/jcallin/.sdkman/bin/sdkman-init.sh"
