@@ -19,8 +19,8 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  brew install git zip unzip vim curl zsh coreutils
-  ln -s /usr/local/bin/greadlink /usr/bin/readlink
+  brew install git zip unzip vim curl zsh zplug coreutils
+  sudo ln -s /usr/local/bin/greadlink /usr/bin/readlink
   
 else
   # Update the system
