@@ -59,7 +59,7 @@ function git {
 mkdir -p ~/Programming
 
 # Setup vim
-git clone git@github.com:jcallin/vimrc.git ~/Programming
+git clone git@github.com:jcallin/vimrc.git ~/Programming/vimrc
 cp ~/Programming/vimrc/.vimrc ~/.vimrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
