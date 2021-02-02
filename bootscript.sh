@@ -60,7 +60,7 @@ mkdir -p ~/Programming
 
 # Setup vim
 git clone git@github.com:jcallin/vimrc.git ~/Programming
-cp ~/Programming/vimrc/.vimrc ~/Programming/.vimrc
+cp ~/Programming/vimrc/.vimrc ~/.vimrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # Configure git also for windows
