@@ -11,15 +11,17 @@ then
     exit 1
 fi
 
-mkdir ~/.ssh
+mkdir -p ~/.ssh
 cp -r .ssh ~/.ssh
 
 read -p "Are you using Mac?" -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-  /usr/bin/env/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  brew install git zip unzip vim curl man zsh
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  brew install git zip unzip vim curl zsh coreutils
+  ln -s /usr/local/bin/greadlink /usr/bin/readlink
+  
 else
   # Update the system
   sudo apt-get update
@@ -102,6 +104,7 @@ ln -s "${SCRIPT_PATH}"/.zshrc ~/.zshrc >/dev/null 2>&1
 ln -s "${SCRIPT_PATH}"/.env_vars ~/.env_vars >/dev/null 2>&1
 
 echo "There are a couple of manual steps required!"
+echo "SDKMan likely won't have installed things correctly. You must open another terminal and run `source ~/.sdkman/bin/sdkman-init.sh` and then re-run this script or run the sdkman commands yourself"
 echo "- Open a new zsh terminal and run 'source /path/to/this/repo/.zshrc' to use zsh"
 echo "- Vim plugins need to be installed manually. Enter vim and run :PluginInstall"
 
